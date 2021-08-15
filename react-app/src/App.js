@@ -1,9 +1,15 @@
+import Item from "./Item.js";
+
 function App() {
   return (
     <div className="App">
-      <h1>Coucou</h1>
-      <h2>{5 + 8}</h2>
-      <input type="text" />
+      <h1>Coucou je suis l'App</h1>
+
+      <Item/>
+      <Item/>
+      <Item/>
+      <Item/>
+      <Item/>
     </div>
   );
 }
