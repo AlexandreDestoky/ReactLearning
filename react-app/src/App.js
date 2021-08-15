@@ -1,20 +1,19 @@
 import { useState } from "react";
-import Item from "./Item.js";
+// import Item from "./Item.js";
 
 function App() {
-  const [prenom,setPrenom] = useState("Alexandre");
-  console.log(prenom);
-  console.log(setPrenom);
+  console.log("Chargement du composant " + Date.now());
+  //Declaration
+  const [age, setAge] = useState(24);
+
+  // Modification
+  const changeAge = () => setAge(age * 2);
+
   return (
     <div className="App">
       <h1>Coucou je suis l'App</h1>
-
-      <Item/>
-      <Item/>
-      <Item/>
-      <Item/>
-      {prenom}
-      <Item/>
+      <h2>{age}</h2>
+      <button onClick={changeAge}> +10 ans</button>
     </div>
   );
 }
