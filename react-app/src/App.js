@@ -1,14 +1,19 @@
-// import { useState } from "react";
-import Item from "./Components/Item/Item.js";
+import { useState } from "react";
+// import Item from "./Components/Item/Item.js";
 
 function App() {
-  console.log("chargement app");
+  const [inputData,setInputData] = useState("");
 
+  const changeInput = (e) => {
+    setInputData(e.target.value)
+  }
+  console.log(inputData);
 
   return (
     <div className="App">
       <h1>Coucou je suis l'App</h1>
-      <Item prenom="BENOIT"/>
+      <input type="text" value={inputData}onInput={e => changeInput(e)} />
+      {/* <Item prenom="BENOIT"/> */}
     </div>
   );
 }
