@@ -2,18 +2,22 @@ import { useState } from "react";
 // import Item from "./Components/Item/Item.js";
 
 function App() {
-  const [inputData,setInputData] = useState("");
-
-  const changeInput = (e) => {
-    setInputData(e.target.value)
-  }
-  console.log(inputData);
+  const [toggle, setToggle] = useState(true);
+  const changeState = () => {
+    setToggle(!toggle);
+  };
+  // let toggleTxt;
+  // if(toggle) {
+  //   toggleTxt = <h2>Toggle est vrai</h2>;
+  // } else {
+  //   toggleTxt = <h2>Toggle est faux</h2>;
+  // }
+  let toggleTxt = <h2>Toggle est {toggle ? "Vrai":"faux"}</h2>
 
   return (
     <div className="App">
-      <h1>Coucou je suis l'App</h1>
-      <input type="text" value={inputData}onInput={e => changeInput(e)} />
-      {/* <Item prenom="BENOIT"/> */}
+      <button onClick={changeState}>Inverse State</button>
+      {toggleTxt}
     </div>
   );
 }
