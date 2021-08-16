@@ -7,15 +7,18 @@ function App() {
   const [age, setAge] = useState(24);
 
   // Modification
-  const changeAge = () => setAge(age * 2);
+  const changeAge = (data) => {
+    console.log(data);
+    setAge(age * 2)
+  };
 
   return (
     <div className="App">
       <h1>Coucou je suis l'App</h1>
       <h2>{age}</h2>
-      <button onClick={changeAge}> +10 ans</button>
+      <button onClick={() => changeAge(age)}> +10 ans</button>
       <hr />
-      <Item prenom="Alexandre" age={age}/>
+      <Item prenom="Alexandre" age={age} func={changeAge}/>
       <Item prenom="BENOIT"/>
     </div>
   );
