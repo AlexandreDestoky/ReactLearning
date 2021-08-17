@@ -12,12 +12,12 @@ function App() {
   // } else {
   //   toggleTxt = <h2>Toggle est faux</h2>;
   // }
-  let toggleTxt = <h2>Toggle est {toggle ? "Vrai":"faux"}</h2>
 
   return (
     <div className="App">
       <button onClick={changeState}>Inverse State</button>
-      {toggleTxt}
+      <h2>Toggle est {toggle ? "Vrai":"faux"}</h2>
+      {toggle && <h2>rendu conditionnel</h2>}
     </div>
   );
 }
