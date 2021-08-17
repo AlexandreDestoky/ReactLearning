@@ -6,18 +6,11 @@ function App() {
   const changeState = () => {
     setToggle(!toggle);
   };
-  // let toggleTxt;
-  // if(toggle) {
-  //   toggleTxt = <h2>Toggle est vrai</h2>;
-  // } else {
-  //   toggleTxt = <h2>Toggle est faux</h2>;
-  // }
 
   return (
     <div className="App">
       <button onClick={changeState}>Inverse State</button>
-      <h2>Toggle est {toggle ? "Vrai":"faux"}</h2>
-      {toggle && <h2>rendu conditionnel</h2>}
+      <div className={`box ${toggle ? "animated" : ""}`}></div>
     </div>
   );
 }

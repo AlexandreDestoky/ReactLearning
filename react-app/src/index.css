@@ -10,3 +10,17 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+
+.box {
+  width:300px;
+  height: 300px;
+  margin:30px;
+  background: salmon;
+  transition: all 700ms ease-in-out;
+}
+
+.animated {
+  background: lightblue;
+  transform: scale(0.8);
+}
