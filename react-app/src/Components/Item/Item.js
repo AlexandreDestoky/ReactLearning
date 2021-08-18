@@ -1,14 +1,11 @@
-// import { useState } from "react";
-import "./Item.css";
-import {ReactComponent as Gorille} from "./biere.svg"
-function Item(props) {
+
+
+export default function Item() {
   return (
-    <div>
-      <h1 className="titre-item">Salut je suis {props.prenom} et je viens de l'item</h1>
-      <img src={"/tomate.jpg"} alt="" />
-      <Gorille/>
-    </div>
+    <li className="border justify-content-between align-items-center d-flex p-2 m-2">
+      <div className="p-3">Texte</div>
+      <button className="btn btn-danger p-2 h-50">Supprimer</button>
+    </li>
   );
 }
 
-export default Item;

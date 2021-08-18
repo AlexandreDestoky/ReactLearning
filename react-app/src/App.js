@@ -1,14 +1,13 @@
 import { useState } from "react";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 // import Item from "./Components/Item/Item.js";
-
+import Form from "./Components/Form/Form.js";
 function App() {
-  const [dataArr, setDataArr] = useState([{ nom: "Julien" }, { nom: "Marc" }, { nom: "Thomas" }, { nom: "Patrick" }]);
-
+  
   return (
     <div className="App">
-      <ul>
-        {dataArr.map((el, index) => (<li key={index}>{el.nom}</li>))}
-      </ul>
+      <h1 className="text-center mt-3">Todo-List</h1>
+      <Form/>
     </div>
   );
 }
