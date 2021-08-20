@@ -2,7 +2,7 @@ import { useState } from "react";
 import Item from "../Item/Item.js";
 import { v4 as uuidv4 } from "uuid";
 
-export default function () {
+export default function Form() {
   const [dataArr, setDataArr] = useState([
     { txt: "Promener le chien", id: uuidv4() },
     { txt: "Sport", id: uuidv4() },
@@ -20,7 +20,6 @@ export default function () {
     const newList = [...dataArr,{txt:addItem,id:uuidv4()}];
     setDataArr(newList);
     e.target.querySelector(".form-control").value = "";
-    
   }
 
   return (
