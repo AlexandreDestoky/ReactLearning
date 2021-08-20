@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import {useState,useEffect} from "react";
 import './App.css';
 
 function App() {
+  const [dataComponent, setDataComponent] = useState(1)
+
+  useEffect(() => {
+    console.log("chargement de App");
+  },[])
+  
+  const augmenter = () => setDataComponent(dataComponent + 1);
+  const diminuer = () => {
+    if(dataComponent > 0) setDataComponent(dataComponent - 1)
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>Le state est : {dataComponent}</p>
+      <button onClick={augmenter}>Plus 1</button>
+      <button onClick={diminuer}>Moins 1</button>
     </div>
   );
 }
