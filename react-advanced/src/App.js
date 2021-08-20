@@ -1,31 +1,19 @@
-import {useState,useEffect} from "react";
+import {useState} from "react";
 import './App.css';
+import Timer from "./Timer.js";
 
 function App() {
 
-  const [timer, setTimer] = useState(1)
-  
-  // setInterval(() => {
-  //   setTimer(timer + 1);
-  //   console.log("lancement");
-  // }, 1000);
+  const [toggle, setToggle] = useState(false)
 
-  
-  useEffect(() => {
-    const timeur = setInterval(() => {
-      setTimer(timer => timer + 1)
-    }, 1000);
-    return () => {
-      clearInterval(timeur);
-    }
-  }, [])
-
-
+const toggleFunc = () => setToggle(!toggle)
 
 
   return (
     <div className="App">
-      <h1>Timer : {timer}</h1>
+      <Timer/>
+      <button onClick={toggleFunc}>Toggle</button>
+      <h2>{toggle && <Timer/>}</h2>
     </div>
   );
 }
