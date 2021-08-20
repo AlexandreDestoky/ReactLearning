@@ -3,25 +3,29 @@ import './App.css';
 
 function App() {
 
-  const [dataImg, setDataImg] = useState();
-  const [nbr, setNbr] = useState(0)
-  console.log("chargement");
+  const [timer, setTimer] = useState(1)
+  
+  // setInterval(() => {
+  //   setTimer(timer + 1);
+  //   console.log("lancement");
+  // }, 1000);
 
+  
   useEffect(() => {
-   fetch("https://api.thecatapi.com/v1/images/search")
-   .then(response => response.json())
-   .then(data => {
-     console.log(data);
-     setDataImg(data)
-   })
-  },[nbr])
+    const timeur = setInterval(() => {
+      setTimer(timer => timer + 1)
+    }, 1000);
+    return () => {
+      clearInterval(timeur);
+    }
+  }, [])
+
+
+
 
   return (
     <div className="App">
-      <h2>{nbr}</h2>
-      <button onClick={()=>setNbr(nbr+ 1)}>Salut</button>
-      <hr />
-      {dataImg && <img src={dataImg[0].url} alt={dataImg[0].id} style={{width:"500px"}}/>}
+      <h1>Timer : {timer}</h1>
     </div>
   );
 }
