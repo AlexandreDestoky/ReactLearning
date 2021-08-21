@@ -15,8 +15,23 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(ref.current[0]);
+    window.addEventListener("resize",actionResize);
+
+    function actionResize(){
+      console.log("resized !");
+    }
+
+    return () => {
+      window.removeEventListener("resize",actionResize)
+    }
   }, [])
+ 
+
+
+
+
+
+
   const toggleFunc = () => setToggle(!toggle);
 
   return (
