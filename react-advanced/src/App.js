@@ -1,52 +1,26 @@
-import { useState,useEffect,useRef } from "react";
+import { useState } from "react";
 import "./App.css";
-import Summer from "./Summer.mp4"
+// import Summer from "./Summer.mp4"
 
 function App() {
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState([1, 1]);
 
-  const ref = useRef([]);
-
-  const addToRef = el => {
-    console.log(el);
-    if(el && !ref.current.includes(el)) {
-      ref.current.push(el)
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener("resize",actionResize);
-
-    function actionResize(){
-      console.log("resized !");
-    }
-
-    return () => {
-      window.removeEventListener("resize",actionResize)
-    }
-  }, [])
- 
-
-
-
-
-
-
-  const toggleFunc = () => setToggle(!toggle);
+  // const toggleFunc = () => setToggle(!toggle);
+  const toggleFunc = () => {
+    const newArr = [...toggle];
+    const suite = newArr[newArr.length - 1] + newArr[newArr.length - 2];
+    newArr.push(suite);
+    setToggle(newArr);
+  };
 
   return (
     <div className="App">
-
-      <video ref={addToRef} width="750" height="500" autoPlay controls muted>
-        <source src={Summer} type="video/mp4"/>
-      </video>
-      <video ref={addToRef} width="750" height="500" autoPlay controls muted>
-        <source src={Summer} type="video/mp4"/>
-      </video>
-      <video ref={addToRef} width="750" height="500" autoPlay controls muted>
-        <source src={Summer} type="video/mp4"/>
-      </video>
-      <button onClick={toggleFunc}>Toggle</button>
+      <button onClick={toggleFunc}>Fibonacci</button>
+      <ul>
+        {toggle.map((el, index) => (
+          <li key={index}>{el}</li>
+        ))}
+      </ul>
     </div>
   );
 }
