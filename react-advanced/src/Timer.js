@@ -15,9 +15,10 @@ export default function Timer() {
   }, [])
 
   return (
-    <div>
+    <>
       <h1>{timer}</h1>
-    </div>
+      <h3>fragment</h3>
+    </>
   )
 }
 
