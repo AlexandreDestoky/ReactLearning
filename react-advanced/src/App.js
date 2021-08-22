@@ -1,20 +1,14 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState } from "react";
 import "./App.css";
-import Content from "./Content";
-import useDimension from "./useDimension";
+import Modal from "./Components/Modal/Modal";
+
 
 function App() {
 
-  const browserWidth = useDimension();
-  console.log(browserWidth);
-
-  if(browserWidth > 772) console.log("Grand écran");
-  else console.log("petit écran");
-  
 
   return (
     <div className="App">
-
+      <Modal/>
     </div>
   );
 }
