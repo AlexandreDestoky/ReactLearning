@@ -6,6 +6,7 @@ function Content(props) {
   return (
     <div className="content">
       <h1>{props.num}</h1>
+      <button onClick={props.num}>clg</button>
     </div>
   )
 }
