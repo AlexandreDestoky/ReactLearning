@@ -1,8 +1,13 @@
 import React from "react";
-import "./Content.css";
 import BtnToggle from "../BtnToggle/BtnToggle";
+import "./Content.css";
+import { useContext } from "react";
+import { ThemeContext } from "../../Context/ThemeContext";
 
 export default function Content() {
+
+  const {theme} = useContext(ThemeContext);
+  console.log(theme);
   return (
     <div className="container">
       <BtnToggle/>
