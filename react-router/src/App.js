@@ -14,6 +14,7 @@ function App() {
           <Route path="/" exact component={Accueil} />
           <Route path="/Projet" exact component={Projet} />
           <Route path="/Contact" exact component={Contact} />
+          <Route path="/" component={() => <div>ERREUR 404</div>}/>
         </Switch>
       </Router>
     </>
