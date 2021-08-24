@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/css/bootstrap.min.css"
 // import Item from "./Components/Item/Item.js";
 import Form from "./Components/Form/Form.js";
 function App() {
