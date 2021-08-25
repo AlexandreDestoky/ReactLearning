@@ -11,23 +11,22 @@ export default function Counter() {
 
   // const count = useSelector(state => state.count);
   const dispatch = useDispatch();
-  const {cart,count,imgURL} = useSelector(state => ({
+  const { cart, count, imgURL } = useSelector(state => ({
     ...state.addCartReducer,
     ...state.counterReducer,
-    ...state.dataImgReducer
-  }))
+    ...state.dataImgReducer,
+  }));
 
-
-  const addToCartFunc  = () => {
+  const addToCartFunc = () => {
     dispatch({
-      type:"ADDCART",
-      payload:cartData
-    })
-  }
+      type: "ADDCART",
+      payload: cartData,
+    });
+  };
 
   useEffect(() => {
-    dispatch(getCatImg())
-  }, [])
+    dispatch(getCatImg());
+  }, []);
 
   return (
     <div>
