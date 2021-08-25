@@ -1,21 +1,18 @@
 const INITIAL_STATE = {
-  cart:0
-}
+  cart: 0,
+};
 
-
-function AddCartReducer(state =INITIAL_STATE,action) {
+function addCartReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case "ADDCART": {
       return {
         ...state,
-        cart:state.cart + Number(action.payload)
-      }
+        cart: state.cart + Number(action.payload),
+      };
     }
-
-
   }
 
   return state;
 }
 
-export default AddCartReducer;
+export default addCartReducer;
