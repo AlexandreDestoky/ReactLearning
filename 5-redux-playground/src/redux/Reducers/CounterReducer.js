@@ -2,7 +2,7 @@ const INITIAL_STATE = {
   count: 0,
 };
 
- function CounterReducer(state = INITIAL_STATE, action) {
+function CounterReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case "INCR": {
       return {
@@ -16,6 +16,8 @@ const INITIAL_STATE = {
         count: state.count - 1,
       };
     }
+    default:
+      break;
   }
   return state;
 }

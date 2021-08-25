@@ -7,20 +7,12 @@ export default function Counter() {
   const [cartData, setCartData] = useState(0);
 
   // const count = useSelector(state => state.count);
-  const cart = useSelector(state => state.cart);
   const dispatch = useDispatch();
+  const {cart,count} = useSelector(state => ({
+    ...state.AddCartReducer,
+    ...state.CounterReducer
+  }))
 
-  // const incrFunc = () => {
-  //   dispatch({
-  //     type: "INCR",
-  //   });
-  // };
-
-  // const decrFunc = () => {
-  //   dispatch({
-  //     type: "DECR",
-  //   });
-  // };
 
   const addToCartFunc  = () => {
     dispatch({
