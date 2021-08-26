@@ -57,3 +57,7 @@ ul {
     display: block;
   }
 }
+
+.liste a {
+  text-decoration: none;
+}

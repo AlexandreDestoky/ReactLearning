@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -11,24 +12,32 @@ export default function Navbar() {
   useEffect(() => {
     const changeWidth = () => {
       setLargeur(window.innerWidth);
-    }
-    window.addEventListener("resize",changeWidth);
+    };
+    window.addEventListener("resize", changeWidth);
 
     return () => {
-      window.removeEventListener("resize",changeWidth);
-    }
-  }, [])
+      window.removeEventListener("resize", changeWidth);
+    };
+  }, []);
 
   return (
     <nav>
       {(toggleMenu || largeur > 500) && (
         <ul className="liste">
-          <li className="items">Accueil</li>
-          <li className="items">Écrire</li>
-          <li className="items">Contact</li>
+          <Link to="/">
+            <li className="items">Accueil</li>
+          </Link>
+          <Link to="/ecrire">
+            <li className="items">Écrire</li>
+          </Link>
+          <Link to="/contact">
+            <li className="items">Contact</li>
+          </Link>
         </ul>
       )}
-      <button onClick={toggleNav} className="btn">🍔</button>
+      <button onClick={toggleNav} className="btn">
+        🍔
+      </button>
     </nav>
   );
 }
