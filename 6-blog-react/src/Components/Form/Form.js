@@ -2,6 +2,7 @@ import React from "react";
 import "./Form.css";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { useHistory } from "react-router";
 
 export default function Form() {
   const [article, setArticle] = useState({
@@ -10,9 +11,24 @@ export default function Form() {
   });
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleForm = e => {
     e.preventDefault();
+
+    dispatch({
+      type:"ADDARTICLE",
+      payload:article
+    })
+
+    setArticle({
+      title:"",
+      body:""
+    })
+
+    setTimeout(() => {
+      history.push("/")
+    }, 700);
   };
 
   const handleInputs = e => {
