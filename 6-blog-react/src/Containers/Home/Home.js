@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const { articles } = useSelector(state => ({
@@ -22,8 +23,6 @@ export default function Home() {
     }
   }, []);
 
-
-
   return (
     <>
       <h1 className="home-title">Tous les articles</h1>
@@ -32,7 +31,17 @@ export default function Home() {
           return (
             <Card key={uuidv4()}>
               <h2>{item.title}</h2>
-              <a href="#">Lire l'article</a>
+              <Link
+                to={{
+                  pathname: `article/${item.title.replaceAll(" ","-").trim()}`,
+                  state: {
+                    title:item.title,
+                    body:item.body
+                  }
+                }}
+              >
+                Lire l'article
+              </Link>
             </Card>
           );
         })}
