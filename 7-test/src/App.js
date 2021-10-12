@@ -1,24 +1,33 @@
 import "./App.css";
-import Liste from "./components/Liste";
 import { useState } from "react";
+import AddBar from "./components/AddBar";
+import Liste from "./components/Liste";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
-  const [tabPrenoms, setTabPrenoms] = useState([
-    {prenom:"Jean",id:452},
-    {prenom:"Thomas",id:52},
-    {prenom:"Paul",id:42},
-    {prenom:"Pierre",id:45},
+  const [taches, setTaches] = useState([
+    { todo: "Ranger garage", id: uuidv4() },
+    { todo: "Faire Courses", id: uuidv4() },
   ]);
-  const [ours, setOurs] = useState(["Brun", "Polaire"]);
 
-  const supNom = (id) => {
-    setTabPrenoms(tabPrenoms => tabPrenoms.filter(el => el.id !== id))
-  }
+  const [valInput, setvalInput] = useState("");
+
+  const supTaches = id => setTaches(taches => taches.filter(el => el.id !== id));
+  const addTaches = () => {
+
+    if(valInput ==="") return;
+    setTaches(taches =>[ ...taches,{ todo: valInput, id: uuidv4() }]);
+    setvalInput("");
+  };
+  const changeInput = e => {
+    setvalInput(e.target.value)
+  };
+
   return (
     <div className="App">
-      <p>Je suis l'APP</p>
-      <hr />
-      <Liste nom="Prénom étudiants" tab={tabPrenoms} suppr={supNom}/>
+      <h1>ToDoListe Basique</h1>
+      <AddBar add={addTaches} change={changeInput} input={valInput} />
+      <Liste list={taches} suppr={supTaches} />
     </div>
   );
 }

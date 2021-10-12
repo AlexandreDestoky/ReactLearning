@@ -1,14 +1,10 @@
 import React from "react";
+import ElementList from "./ElementList";
 
 export default function Liste(props) {
   return (
-    <>
-      <p>Je suis la liste des "{props.nom || "pas de nom"}"</p>
-      <ul>
-        {props.tab.map(el => 
-          <li key={el.id}>{el.prenom} <span onClick={() =>props.suppr(el.id)}>❌</span></li>
-        )}
-      </ul>
-    </>
+    <ul>
+      {props.list.map(el => <ElementList key={el.id} id={el.id} nom={el.todo} suppr={props.suppr}/>)}
+    </ul>
   );
 }
