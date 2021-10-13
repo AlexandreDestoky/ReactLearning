@@ -1,33 +1,22 @@
 import "./App.css";
 import { useState } from "react";
-import AddBar from "./components/AddBar";
-import Liste from "./components/Liste";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
-  const [taches, setTaches] = useState([
-    { todo: "Ranger garage", id: uuidv4() },
-    { todo: "Faire Courses", id: uuidv4() },
-  ]);
 
-  const [valInput, setvalInput] = useState("");
+  const [age, setAge] = useState(37);
 
-  const supTaches = id => setTaches(taches => taches.filter(el => el.id !== id));
-  const addTaches = () => {
-
-    if(valInput ==="") return;
-    setTaches(taches =>[ ...taches,{ todo: valInput, id: uuidv4() }]);
-    setvalInput("");
-  };
-  const changeInput = e => {
-    setvalInput(e.target.value)
-  };
+  const moins10 =  () => {
+    if(age <= 0) return;
+    setAge(age => age-10);
+  }
 
   return (
     <div className="App">
-      <h1>ToDoListe Basique</h1>
-      <AddBar add={addTaches} change={changeInput} input={valInput} />
-      <Liste list={taches} suppr={supTaches} />
+
+<button onClick={moins10}>Moins 10</button>
+      {age > 18 && <p>Vous êtes majeur</p>}
+      <p>{age > 16 ? "Vous pouvez": "Vous ne pouvez pas"} boire de la bière</p>
     </div>
   );
 }
