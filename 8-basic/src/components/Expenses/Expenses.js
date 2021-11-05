@@ -1,12 +1,13 @@
 import React from 'react'
 import Card from '../UI/Card'
-import "./Expense.css"
+import "./Expenses.css"
 import ExpenseItem from './ExpenseItem';
 
-export default function Expense(props) {
+export default function Expenses(props) {
+
   return (
     <Card className="expenses">
-      {props.data.map(el => <ExpenseItem {...el} key={el.id}/>)}
+      {props.items.map(el => <ExpenseItem {...el} key={el.id}/>)}
     </Card>
   )
 }
