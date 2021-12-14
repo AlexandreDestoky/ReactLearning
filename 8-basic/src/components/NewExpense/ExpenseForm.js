@@ -2,10 +2,11 @@ import React, { useState } from "react";
 
 import "./ExpenseForm.css";
 
-const ExpenseForm = (props) => {
+const ExpenseForm = props => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+  const [newExpense, setNewExpense] = useState(false);
 
   const titleChangeHandler = event => {
     setEnteredTitle(event.target.value);
@@ -32,8 +33,13 @@ const ExpenseForm = (props) => {
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
-    props.onSaveExpenseData(expenseData)
+    props.onSaveExpenseData(expenseData);
+    setNewExpense(false);
   };
+
+  if (!newExpense) {
+    return <button onClick={() => setNewExpense(true)}>Add New Expense</button>;
+  }
 
   return (
     <form onSubmit={submitHandler}>
@@ -44,11 +50,23 @@ const ExpenseForm = (props) => {
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
-          <input type="number" min="0.01" step="0.01" value={enteredAmount} onChange={amountChangeHandler} />
+          <input
+            type="number"
+            min="0.01"
+            step="0.01"
+            value={enteredAmount}
+            onChange={amountChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Date</label>
-          <input type="date" min="2019-01-01" max="2022-12-31" value={enteredDate} onChange={dateChangeHandler} />
+          <input
+            type="date"
+            min="2019-01-01"
+            max="2022-12-31"
+            value={enteredDate}
+            onChange={dateChangeHandler}
+          />
         </div>
       </div>
       <div className="new-expense__actions">
@@ -59,6 +77,5 @@ const ExpenseForm = (props) => {
 };
 
 export default ExpenseForm;
-
 
 // Explaining concept of passing data between brother
