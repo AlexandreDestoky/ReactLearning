@@ -6,7 +6,7 @@ import styles from "./AddUser.module.css";
 export default function AddUser() {
   const addUserHandler = e => {
     e.preventDefault();
-    if(!userNameInput || !ageInput) return;
+    if (!userNameInput.trim() || !ageInput.trim() || +ageInput < 1) return;
     console.log(userNameInput);
     console.log(ageInput);
     setUserNameInput("");
