@@ -3,18 +3,25 @@ import Card from "../UI/Card";
 import Bouton from "../UI/Bouton";
 import styles from "./AddUser.module.css";
 
-export default function AddUser() {
+export default function AddUser(props) {
+  const [userNameInput, setUserNameInput] = useState("");
+  const [ageInput, setAgeInput] = useState("");
+
   const addUserHandler = e => {
     e.preventDefault();
     if (!userNameInput.trim() || !ageInput.trim() || +ageInput < 1) return;
-    console.log(userNameInput);
-    console.log(ageInput);
+    // console.log(userNameInput);
+    // console.log(ageInput);
     setUserNameInput("");
     setAgeInput("");
+    let newUser = {
+      id : Math.random().toString(),
+      name:userNameInput,
+      age:ageInput
+    }
+    props.newUser(prevState => [...prevState, newUser])
   };
 
-  const [userNameInput, setUserNameInput] = useState("");
-  const [ageInput, setAgeInput] = useState("");
 
   return (
     <Card className={styles.input}>
