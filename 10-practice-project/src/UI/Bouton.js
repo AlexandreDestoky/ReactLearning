@@ -1,10 +1,13 @@
-import React from 'react'
-import styles from "./Bouton.module.css";
+import React from "react";
 
-export default function Bouton(props) {
+import classes from "./Bouton.module.css";
+
+const Bouton = props => {
   return (
-    <button className={styles.button}>
+    <button className={classes.button} type={props.type || "button"} onClick={props.onClick}>
       {props.children}
     </button>
-  )
-}
+  );
+};
+
+export default Bouton;
