@@ -4,10 +4,7 @@ import AddUser from "./Users/AddUser";
 import UsersList from "./Users/UsersList";
 
 function App() {
-  const [usersList, setUsersList] = useState([
-    { id: "jiodmdsjcms,qsx54", name: "Jean", age: 12 },
-    { id: "jiodbtgyyms,qsx54", name: "Pierre", age: 48 },
-  ]);
+  const [usersList, setUsersList] = useState([]);
   return (
     <div className="App">
       <AddUser newUser={setUsersList}/>
