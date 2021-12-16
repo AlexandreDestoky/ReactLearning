@@ -13,13 +13,16 @@ const AddUser = props => {
 
   const addUserHandler = event => {
     event.preventDefault();
-    if (nameInputRef.current.value .trim().length === 0 || ageInputRef.current.value .trim().length === 0) {
+    if (
+      nameInputRef.current.value.trim().length === 0 ||
+      ageInputRef.current.value.trim().length === 0
+    ) {
       setError({
         title: "Invalid input",
         message: "Please enter a valid name and age (non-empty values).",
       });
       return;
-    } 
+    }
     if (+ageInputRef.current.value < 1) {
       setError({
         title: "Invalid age",
@@ -27,18 +30,18 @@ const AddUser = props => {
       });
       return;
     }
-
     props.onAddUser(nameInputRef.current.value, ageInputRef.current.value);
-    nameInputRef.current.value = ""
-    ageInputRef.current.value = ""
+    nameInputRef.current.value = "";
+    ageInputRef.current.value = "";
   };
-
 
   const errorHandler = () => {
     setError(null);
   };
 
-  console.log("Composant chargé");
+
+
+  
 
   return (
     <div>
@@ -47,18 +50,11 @@ const AddUser = props => {
       )}
       <Card className={classes.input}>
         <form onSubmit={addUserHandler}>
+      {/* <p>L'exemple : {exemple}</p> */}
           <label htmlFor="username">Username</label>
-          <input
-            id="username"
-            type="text"
-            ref={nameInputRef}
-          />
+          <input id="username" type="text" ref={nameInputRef} />
           <label htmlFor="age">Age (Years)</label>
-          <input
-            id="age"
-            type="number"
-            ref={ageInputRef}
-          />
+          <input id="age" type="number" ref={ageInputRef} />
           <Bouton type="submit">Add User</Bouton>
         </form>
       </Card>
