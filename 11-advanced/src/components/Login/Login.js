@@ -18,8 +18,11 @@ const Login = props => {
     }, 500);
     return () => {
       clearTimeout(identifier)
+      console.log("clean up");
     }
   }, [enteredEmail, enteredPassword]);
+
+  // const [state, dispatch] = useReducer(reducer, initialState, init)
 
   const emailChangeHandler = event => {
     setEnteredEmail(event.target.value);
