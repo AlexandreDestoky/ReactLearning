@@ -28,15 +28,15 @@ export default function CartContextProvider(props) {
     dispatchCartAction({ type: "ADD", item: item });
   };
 
-  // const removeItemFromCartHandler = id => {
-  //   dispatchCartAction({ type: "REMOVE", id: id });
-  // };
+  const removeItemFromCartHandler = id => {
+    dispatchCartAction({ type: "REMOVE", id: id });
+  };
 
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
     addItem: addItemToCartHandler,
-    // removeItem: removeItemFromCartHandler,
+    removeItem: removeItemFromCartHandler,
   };
 
   return <CartContext.Provider value={cartContext}>{props.children}</CartContext.Provider>;
