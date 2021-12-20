@@ -11,7 +11,6 @@ const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD":
       const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;
-      
       const existingCartItemIndex = state.items.findIndex(item => item.id === action.item.id);
       const existingCartItem = state.items[existingCartItemIndex];
 
@@ -31,6 +30,21 @@ const cartReducer = (state, action) => {
         items: updatedItems,
         totalAmount: updatedTotalAmount,
       };
+    case "REMOVE": 
+    let index = state.items.findIndex(el => el.id === action.id);
+    let currentItem = state.items[index];
+    let updatedItemsRemove;
+    if(currentItem.amount > 1) {
+      updatedItemsRemove = [...state.items];
+      updatedItemsRemove[index].amount -= 1;
+    } else {
+      updatedItemsRemove = state.items.filter(el => el.id !== action.id)
+    }
+    return {
+      items: updatedItemsRemove,
+      totalAmount: Math.round((state.totalAmount - currentItem.price )* 100) / 100,
+      // totalAmount: state.totalAmount - currentItem.price,
+    };
     default:
       return defaultCartState;
   }

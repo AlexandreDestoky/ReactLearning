@@ -15,7 +15,6 @@ const MealItemForm = props => {
       price:props.price,
       amount:+amountInputRef.current.value
     })
-    console.log(amountInputRef.current.value);
   };
 
   return (
