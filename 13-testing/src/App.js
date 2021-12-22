@@ -1,28 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 
 function App() {
-  const [toggle, setToggle] = useState(true);
-  const [prenom, setPrenom] = useState("Alexandre");
+ const [apiData, setApiData] = useState([])
 
-  const toggleFunc = () => {
-    setToggle(prevState => !prevState);
-    setPrenom("Paul");
-  };
+ 
+ useEffect(() => {
+   
+    setTimeout(() => {
+      setApiData(["Jean","Pierre"])
+    }, 3000);
+}, [])
 
-  console.log(prenom + " " + Date.now());
-  console.log(toggle + " " + Date.now());
 
+  console.log("fin lecture app");
   return (
     <div className="App">
-      <button
-        onClick={() => {
-          toggleFunc();
-        }}
-      >
-        Toggle
-      </button>
+      <p>Mon api : {apiData}</p>
+
     </div>
   );
 }
