@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import MoviesList from "./components/MoviesList";
 import "./App.css";
@@ -8,12 +8,11 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchMovies = async () => {
+  const fetchMovies = useCallback(async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(`https://swapi.dev/api/film`);
-
-      if(!response.ok) throw new Error("FAILED REQUEST");
+      const response = await fetch(`https://swapi.dev/api/films`);
+      if (!response.ok) throw new Error("FAILED REQUEST");
       const data = await response.json();
       const films = data.results.map(movie => {
         return {
@@ -24,14 +23,18 @@ function App() {
         };
       });
       setDummyMovies(films);
-      setError(false)
+      setError(false);
     } catch (error) {
       console.log(error);
       setError(error.message);
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchMovies();
+  }, [fetchMovies]);
 
   return (
     <>
@@ -41,7 +44,9 @@ function App() {
       <section>
         {isLoading && <div id="loading"></div>}
         {!isLoading && <MoviesList movies={dummyMovies} />}
-        {!isLoading && !error && dummyMovies.length === 0 && <p>Click on fetch button to fetch movies</p>}
+        {!isLoading && !error && dummyMovies.length === 0 && (
+          <p>Click on fetch button to fetch movies</p>
+        )}
         {!isLoading && error && <p>{error}</p>}
       </section>
     </>
