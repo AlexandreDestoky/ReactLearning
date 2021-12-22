@@ -5,9 +5,15 @@ import "./App.css";
 
 function App() {
   const [dummyMovies, setDummyMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const fetchMovies = async () => {
-      const response = await fetch(`https://swapi.dev/api/films`);
+    try {
+      setIsLoading(true);
+      const response = await fetch(`https://swapi.dev/api/film`);
+
+      if(!response.ok) throw new Error("FAILED REQUEST");
       const data = await response.json();
       const films = data.results.map(movie => {
         return {
@@ -18,22 +24,14 @@ function App() {
         };
       });
       setDummyMovies(films);
+      setError(false)
+    } catch (error) {
+      console.log(error);
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
-  // const fetchMovies = () => {
-  //   fetch(`https://swapi.dev/api/films`)
-  //     .then(response => response.json())
-  //     .then(response => {
-  //       const films = response.results.map(movie => {
-  //         return {
-  //           id: movie.episode_id,
-  //           openingText: movie.opening_crawl,
-  //           title: movie.title,
-  //           releaseDate: movie.release_date,
-  //         };
-  //       });
-  //       setDummyMovies(films);
-  //     });
-  // };
 
   return (
     <>
@@ -41,7 +39,10 @@ function App() {
         <button onClick={fetchMovies}>Fetch Movies</button>
       </section>
       <section>
-        <MoviesList movies={dummyMovies} />
+        {isLoading && <div id="loading"></div>}
+        {!isLoading && <MoviesList movies={dummyMovies} />}
+        {!isLoading && !error && dummyMovies.length === 0 && <p>Click on fetch button to fetch movies</p>}
+        {error && <p>{error}</p>}
       </section>
     </>
   );
