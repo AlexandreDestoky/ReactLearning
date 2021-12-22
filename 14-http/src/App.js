@@ -42,7 +42,7 @@ function App() {
         {isLoading && <div id="loading"></div>}
         {!isLoading && <MoviesList movies={dummyMovies} />}
         {!isLoading && !error && dummyMovies.length === 0 && <p>Click on fetch button to fetch movies</p>}
-        {error && <p>{error}</p>}
+        {!isLoading && error && <p>{error}</p>}
       </section>
     </>
   );
