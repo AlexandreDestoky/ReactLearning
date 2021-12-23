@@ -1,25 +1,13 @@
-import { useEffect, useState } from "react";
-import "./App.css";
-
+import React from 'react';
+import BackwardCounter from './components/BackwardCounter';
+import ForwardCounter from './components/ForwardCounter';
 
 function App() {
- const [apiData, setApiData] = useState([])
-
- 
- useEffect(() => {
-   
-    setTimeout(() => {
-      setApiData(["Jean","Pierre"])
-    }, 3000);
-}, [])
-
-
-  console.log("fin lecture app");
   return (
-    <div className="App">
-      <p>Mon api : {apiData}</p>
-
-    </div>
+    <React.Fragment>
+      <ForwardCounter />
+      <BackwardCounter />
+    </React.Fragment>
   );
 }
 
