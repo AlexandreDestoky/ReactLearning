@@ -6,6 +6,7 @@ const SimpleInput = () => {
 
   const formSubmissionHandler = (e) => {
     e.preventDefault();
+    if(enteredName.trim() === "") return;
     console.log(enteredName);
     console.log("-----------");
     console.log(inputName.current.value);
@@ -17,10 +18,10 @@ const SimpleInput = () => {
   return (
     <form onSubmit={formSubmissionHandler}>
       <div className='form-control'>
-        <label htmlFor='name'>Your Name</label>
-        <input type='text' id='name' onChange={(e)=> setEnteredName(e.target.value)} ref={inputName} />
+        <label htmlFor='testing'>Your Name</label>
+        <input type='text' id='testing' onChange={(e)=> setEnteredName(e.target.value)} ref={inputName} />
       </div>
-      <p>NAme: {enteredName}</p>
+
       <div className="form-actions">
         <button>Submit</button>
       </div>
