@@ -6,17 +6,22 @@ const SimpleInput = () => {
 
   const isNameValid = enteredName.trim() !== "";
   const error = !isNameValid && isTouched;
+  const isFormValid = isNameValid
+
 
   const formSubmissionHandler = e => {
     e.preventDefault();
     setIsTouched(true);
-    if (enteredName.trim() === "") return;
+    if (!isNameValid) return;
+    console.log(enteredName);
+    setEnteredName("");
+    setIsTouched(false)
   };
 
   const changeInputName = e => {
     setEnteredName(e.target.value);
   };
-  
+
   const changeIsTouched = () => {
     setIsTouched(true);
   };
@@ -25,12 +30,13 @@ const SimpleInput = () => {
     <form onSubmit={formSubmissionHandler}>
       <div className={`form-control ${error ? "invalid" : ""}`}>
         <label htmlFor="testing">Your Name</label>
-        <input type="text" id="testing" onChange={changeInputName} onBlur={changeIsTouched} />
+        <input type="text" id="testing" onChange={changeInputName} value={enteredName} onBlur={changeIsTouched} />
         {error && <p className="error-text">Le nom n'est pas valide</p>}
       </div>
 
       <div className="form-actions">
         <button>Submit</button>
+        {/* <button disabled={!isFormValid}>Submit</button> */}
       </div>
     </form>
   );
