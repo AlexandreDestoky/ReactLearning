@@ -18,14 +18,22 @@ const SimpleInput = () => {
   };
 
   // const inputName = useRef();
+  const changeInputName = (e) => {
+    setEnteredName(e.target.value)
+    if (enteredName.trim() !== "") {
+      setIsNameValid(true);
+    }
+  }
 
   return (
     <form onSubmit={formSubmissionHandler}>
       <div className={`form-control ${!isNameValid && isTouched? "invalid" : ""}`}>
         <label htmlFor="testing">Your Name</label>
-        <input type="text" id="testing" onChange={e => setEnteredName(e.target.value)} onFocus={() => setIsTouched(true)}/>
+        <input type="text" id="testing" onChange={changeInputName} onBlur={() => setIsTouched(true)}/>
         {!isNameValid && isTouched && <p className="error-text">Le nom n'est pas valide</p>}
       </div>
+
+      <p>isNameValid : {JSON.stringify(isNameValid)}, isTouched : {JSON.stringify(isTouched)}</p>
 
       <div className="form-actions">
         <button>Submit</button>
