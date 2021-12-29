@@ -84,6 +84,10 @@ button:disabled {
   border-color: grey;
 }
 
+.invisible {
+  opacity: 0;
+}
+
 .form-actions {
   text-align: right;
 }

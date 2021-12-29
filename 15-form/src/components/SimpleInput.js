@@ -2,41 +2,64 @@ import { useState } from "react";
 
 const SimpleInput = () => {
   const [enteredName, setEnteredName] = useState("");
-  const [isTouched, setIsTouched] = useState(false);
-
+  const [IsNameTouched, setIsNameTouched] = useState(false);
   const isNameValid = enteredName.trim() !== "";
-  const error = !isNameValid && isTouched;
-  const isFormValid = isNameValid
+  const errorName = !isNameValid && IsNameTouched;
 
+  const [enteredMail, setEnteredMail] = useState("");
+  const [IsMailTouched, setIsMailTouched] = useState(false);
+  const isMailValid = validateEmail(enteredMail);
+  const errorMail = !isMailValid && IsMailTouched;
+
+  const isFormValid = isNameValid && isMailValid;
 
   const formSubmissionHandler = e => {
     e.preventDefault();
-    setIsTouched(true);
-    if (!isNameValid) return;
+    setIsNameTouched(true);
+    if (!isFormValid) return;
     console.log(enteredName);
+    console.log(enteredMail);
     setEnteredName("");
-    setIsTouched(false)
+    setEnteredMail("");
+    setIsNameTouched(false);
+    setIsMailTouched(false);
   };
 
-  const changeInputName = e => {
-    setEnteredName(e.target.value);
-  };
-
-  const changeIsTouched = () => {
-    setIsTouched(true);
-  };
+  function validateEmail(email) {
+    let re = /\S+@\S+\.\S+/;
+    return re.test(email);
+  }
 
   return (
     <form onSubmit={formSubmissionHandler}>
-      <div className={`form-control ${error ? "invalid" : ""}`}>
+      <div className={`form-control ${errorName ? "invalid" : ""}`}>
         <label htmlFor="testing">Your Name</label>
-        <input type="text" id="testing" onChange={changeInputName} value={enteredName} onBlur={changeIsTouched} />
-        {error && <p className="error-text">Le nom n'est pas valide</p>}
+        <input
+          type="text"
+          id="testing"
+          onChange={e => setEnteredName(e.target.value)}
+          value={enteredName}
+          onBlur={() => setIsNameTouched(true)}
+        />
+        <p className={`error-text ${errorName ? "" : "invisible"}`}>Le nom n'est pas valide</p>
+      </div>
+
+      <div className={`form-control ${errorMail ? "invalid" : ""}`}>
+        <label htmlFor="mail">Your Mail</label>
+        <input
+          type="email"
+          id="mail"
+          onChange={e => setEnteredMail(e.target.value)}
+          value={enteredMail}
+          onBlur={() => setIsMailTouched(true)}
+        />
+        <p className={`error-text ${errorMail ? "" : "invisible"}`}>
+          Le mail n'est pas valide
+        </p>
       </div>
 
       <div className="form-actions">
         <button>Submit</button>
-        {/* <button disabled={!isFormValid}>Submit</button> */}
       </div>
     </form>
   );
