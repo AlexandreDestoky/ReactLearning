@@ -1,43 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-import Tasks from "./components/Tasks/Tasks";
-import NewTask from "./components/NewTask/NewTask";
-import useHttp from "./hooks/use-http";
+export default function App() {
+  const masseMaigre = 60;
+  const [poids, setPoids] = useState(masseMaigre);
 
-function App() {
-  const [tasks, setTasks] = useState([]);
-
-  const { isLoading, error, sendRequest: fetchTasks } = useHttp();
-
-  useEffect(() => {
-    const transformTasks = tasksObj => {
-      const loadedTasks = [];
-
-      for (const taskKey in tasksObj) {
-        loadedTasks.push({ id: taskKey, text: tasksObj[taskKey].text });
-      }
-
-      setTasks(loadedTasks);
-    };
-
-    fetchTasks(
-      {
-        url: "https://react-project-9abcd-default-rtdb.europe-west1.firebasedatabase.app/tasks.json",
-      },
-      transformTasks
-    );
-  }, [fetchTasks]);
-
-  const taskAddHandler = task => {
-    setTasks(prevTasks => prevTasks.concat(task));
+  const calcBodyFat = () => {
+    return ((poids - masseMaigre) / poids) * 100;
   };
-
   return (
-    <React.Fragment>
-      <NewTask onAddTask={taskAddHandler} />
-      <Tasks items={tasks} loading={isLoading} error={error} onFetch={fetchTasks} />
-    </React.Fragment>
+    <div>
+      <label htmlFor="">Poids</label>
+      <input
+        type="number"
+        placeholder="kg"
+        min={masseMaigre}
+        onChange={e => setPoids(e.target.value)}
+      />
+      <p>Pourcentage Bodyfat : {calcBodyFat().toFixed(2)}%</p>
+    </div>
   );
 }
-
-export default App;
