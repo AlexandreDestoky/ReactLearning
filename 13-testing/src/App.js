@@ -8,15 +8,15 @@ export default function App() {
     return ((poids - masseMaigre) / poids) * 100;
   };
   return (
-    <div>
-      <label htmlFor="">Poids</label>
-      <input
-        type="number"
-        placeholder="kg"
-        min={masseMaigre}
-        onChange={e => setPoids(e.target.value)}
-      />
-      <p>Pourcentage Bodyfat : {calcBodyFat().toFixed(2)}%</p>
-    </div>
-  );
+  //   <div>
+  //     <label htmlFor="">Poids</label>
+  //     <input
+  //       type="number"
+  //       placeholder="kg"
+  //       min={masseMaigre}
+  //       onChange={e => setPoids(e.target.value)}
+  //     />
+  //     <p>Pourcentage Bodyfat : {calcBodyFat().toFixed(2)}%</p>
+  //   </div>
+  // );
 }
