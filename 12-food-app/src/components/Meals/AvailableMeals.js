@@ -29,6 +29,19 @@ const DUMMY_MEALS = [
   },
 ];
 
+// const ajout = () => {
+//   fetch("https://react-project-9abcd-default-rtdb.europe-west1.firebasedatabase.app/meals.json",
+//   {
+//     method: "POST",
+//     body: JSON.stringify(DUMMY_MEALS[3]),
+//     headers: {
+//       "Content-Type": "application/json",
+//     }
+//    }
+//   )
+// }
+
+
 const AvailableMeals = () => {
   const mealsList = DUMMY_MEALS.map(meal => <MealItem key={meal.id} {...meal} />);
 
