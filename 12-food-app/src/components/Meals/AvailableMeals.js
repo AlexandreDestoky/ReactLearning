@@ -4,6 +4,10 @@ import Card from "../UI/Card";
 import { useEffect, useState } from "react";
 
 const AvailableMeals = () => {
+  const [DUMMY_MEALS, setDUMMY_MEALS] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
+
+
   useEffect(() => {
     let mealsArray = [];
     fetch(
@@ -20,9 +24,16 @@ const AvailableMeals = () => {
           });
         }
         setDUMMY_MEALS(mealsArray);
+        setIsLoading(false)
       });
   }, []);
-  const [DUMMY_MEALS, setDUMMY_MEALS] = useState([]);
+
+  if(isLoading) {
+    return ( <section>
+      <p>Loading...</p>
+    </section>)
+  
+  }
 
   const mealsList = DUMMY_MEALS.map(meal => <MealItem key={meal.id} {...meal} />);
 
