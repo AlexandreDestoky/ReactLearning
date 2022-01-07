@@ -25,3 +25,7 @@
 .counter button {
   margin: 1em;
 }
+
+.invisible {
+  opacity: 0;
+}
