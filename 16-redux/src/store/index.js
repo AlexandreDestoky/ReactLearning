@@ -1,4 +1,4 @@
-import { createStore } from "react-redux";
+import { createStore } from "redux";
 
 const counterReducer = (state = { counter: 0 }, action) => {
   switch (action.type) {
@@ -8,7 +8,7 @@ const counterReducer = (state = { counter: 0 }, action) => {
       return { counter: state.counter - 1 };
 
     default:
-      throw new Error("Mauvaise action, veuillez changer");
+      return state
   }
 };
 
