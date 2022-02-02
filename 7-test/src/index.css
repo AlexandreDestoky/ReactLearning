@@ -1,0 +1,9 @@
+body {
+  background-color: cadetblue;
+  font-family: monospace;
+  font-size: 2rem;
+}
+
+button,input {
+  font-size: 2rem;
+}

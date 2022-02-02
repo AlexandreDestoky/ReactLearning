@@ -1,15 +1,32 @@
 import "./App.css";
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import NavBar from "./components/NavBar";
+import React from "react";
+// import { useSelector } from "react-redux";
+// import { increment, decrement, incrementByAmount } from "./features/counter/counterSlice";
+// import { useDispatch } from "react-redux";
 
-function App() {
+export default function App() {
+  // const cptValue = useSelector(state => state.counter.value);
+  // const dispatch = useDispatch();
+  // const nbrInput = useRef();
+
+  // const addValue = e => {
+  //   e.preventDefault();
+  //   const nbrToAdd = +nbrInput.current.value;
+  //   dispatch(incrementByAmount(nbrToAdd));
+  //   nbrInput.current.value = 0;
+  // };
 
   return (
-    <div className="App">
-
+    <div>
+      {/* <p>La valeur du compteur est de : {cptValue}</p>
+      <button onClick={() => dispatch(increment())}>Ajouter 1</button>
+      <button onClick={() => dispatch(decrement())}>Diminuer de 1</button>
+      <button onClick={() => dispatch(incrementByAmount(15))}>Augmenter de 15</button>
+      <form onSubmit={addValue}>
+        <input type="number" ref={nbrInput} defaultValue={0} min={0}/>
+        <button>Ajouter</button>
+      </form> */}
+     salut
     </div>
   );
 }
-
-export default App;

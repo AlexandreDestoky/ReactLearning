@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Modal/> */}
+      <Modal/>
       {/* <Accord/> */}
       <Navbar/>
     </div>
